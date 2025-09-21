@@ -13,9 +13,8 @@ from huggingface_hub import login, HfApi
 # Define constants for the dataset and output paths
 
 
-# os.environ["HF_TOKEN"] = "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"  # please your token
-HF_TOKEN = os.getenv("HF_TOKEN")
-api = HfApi(token=HF_TOKEN)
+os.environ["HF_TOKEN"] = "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"   # please use your token
+api = HfApi(token=os.getenv("HF_TOKEN"))
 
 # please create your dataset as you create your space
 # DATASET_PATH = "hf://datasets/ranjithkumarsundaramoorthy/tourism-project/tourism.csv"

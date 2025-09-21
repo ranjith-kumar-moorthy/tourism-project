@@ -2,16 +2,15 @@ from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
 from huggingface_hub import HfApi, create_repo
 import os
 
-# os.environ["HF_TOKEN"] = "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"  # please your token
-HF_TOKEN = os.getenv("HF_TOKEN")
-api = HfApi(token=HF_TOKEN)
+os.environ["HF_TOKEN"] = "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"   # please use your token
+api = HfApi(token=os.getenv("HF_TOKEN"))
 
 repo_id = "ranjithkumarsundaramoorthy/tourism-project"    # please create your space and repository
 
 repo_type = "dataset"
 
 # Initialize API client
-api = HfApi(token=HF_TOKEN)
+# api = HfApi(token=HF_TOKEN)
 
 # Step 1: Check if the space exists
 try:

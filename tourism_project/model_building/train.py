@@ -21,8 +21,7 @@ mlflow.set_experiment("mlops-training-experiment")
 
 api = HfApi()
 
-os.environ["HF_TOKEN"] = "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" # please use your token
-# HF_TOKEN = os.getenv("HF_TOKEN")
+os.environ["HF_TOKEN"] = "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"   # please use your token
 api = HfApi(token=os.getenv("HF_TOKEN"))
 
 # here you will be replacing with your datasets
