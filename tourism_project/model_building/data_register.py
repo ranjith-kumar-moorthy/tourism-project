@@ -2,7 +2,7 @@ from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
 from huggingface_hub import HfApi, create_repo
 import os
 
-os.environ["HF_TOKEN"] = "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"   # please use your token
+os.environ["HF_TOKEN"] = "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"   # please use your token
 api = HfApi(token=os.getenv("HF_TOKEN"))
 
 repo_id = "ranjithkumarsundaramoorthy/tourism-project"    # please create your space and repository
