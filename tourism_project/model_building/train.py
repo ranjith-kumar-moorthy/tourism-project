@@ -15,17 +15,20 @@ import os
 from huggingface_hub import login, HfApi, create_repo
 from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
 import mlflow
-from google.colab import userdata
+# from google.colab import userdata
 
 
 mlflow.set_experiment("mlops-training-experiment")
 
 # Access the token from Colab secrets
-HF_TOKEN = userdata.get('HF_TOKEN')
-api = HfApi(token=HF_TOKEN)
+# HF_TOKEN = userdata.get('HF_TOKEN')
+# api = HfApi(token=HF_TOKEN)
 
 # Access the token from Colab secrets and set it as an environment variable
-os.environ['HF_TOKEN'] = userdata.get('HF_TOKEN')
+# os.environ['HF_TOKEN'] = userdata.get('HF_TOKEN')
+
+HF_TOKEN = os.getenv('HF_TOKEN')
+api = HfApi(token=HF_TOKEN)
 
 # Define dataset repository on Hugging Face
 dataset_repo_id = "datasets/ranjithkumarsundaramoorthy/tourism-project" # please replace

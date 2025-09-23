@@ -9,16 +9,19 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 # for hugging face space authentication to upload files
 from huggingface_hub import login, HfApi
-from google.colab import userdata
+# from google.colab import userdata
 
 # Define constants for the dataset and output paths
 
 # Access the token from Colab secrets
-HF_TOKEN = userdata.get('HF_TOKEN')
-api = HfApi(token=HF_TOKEN)
+# HF_TOKEN = userdata.get('HF_TOKEN')
+# api = HfApi(token=HF_TOKEN)
 
 # Access the token from Colab secrets and set it as an environment variable
-os.environ['HF_TOKEN'] = userdata.get('HF_TOKEN')
+# os.environ['HF_TOKEN'] = userdata.get('HF_TOKEN')
+
+HF_TOKEN = os.getenv('HF_TOKEN')
+api = HfApi(token=HF_TOKEN)
 
 # print(f"After Token: {HF_TOKEN}")
 
