@@ -15,13 +15,17 @@ import os
 from huggingface_hub import login, HfApi, create_repo
 from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
 import mlflow
+from google.colab import userdata
+
 
 mlflow.set_experiment("mlops-training-experiment")
 
-api = HfApi()
+# Access the token from Colab secrets
+HF_TOKEN = userdata.get('HF_TOKEN')
+api = HfApi(token=HF_TOKEN)
 
-os.environ["HF_TOKEN"] = "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"   # please use your token
-api = HfApi(token=os.getenv("HF_TOKEN"))
+# Access the token from Colab secrets and set it as an environment variable
+os.environ['HF_TOKEN'] = userdata.get('HF_TOKEN')
 
 # Define dataset repository on Hugging Face
 dataset_repo_id = "datasets/ranjithkumarsundaramoorthy/tourism-project" # please replace
@@ -97,17 +101,17 @@ with mlflow.start_run():
     grid_search.fit(Xtrain, ytrain)
 
     # Log all parameter combinations and their mean test scores
-    #results = grid_search.cv_results_
-    #for i in range(len(results['params'])):
-    #    param_set = results['params'][i]
-    #    mean_score = results['mean_test_score'][i]
-    #    std_score = results['std_test_score'][i]
-    #
-    #    # Log each combination as a separate MLflow run
-    #    with mlflow.start_run(nested=True):
-    #        mlflow.log_params(param_set)
-    #        mlflow.log_metric("mean_test_score", mean_score)
-    #        mlflow.log_metric("std_test_score", std_score)
+    # results = grid_search.cv_results_
+    # for i in range(len(results['params'])):
+    #     param_set = results['params'][i]
+    #     mean_score = results['mean_test_score'][i]
+    #     std_score = results['std_test_score'][i]
+
+    #     # Log each combination as a separate MLflow run
+    #     with mlflow.start_run(nested=True):
+    #         mlflow.log_params(param_set)
+    #         mlflow.log_metric("mean_test_score", mean_score)
+    #         mlflow.log_metric("std_test_score", std_score)
 
     # Log best parameters separately in main run
     mlflow.log_params(grid_search.best_params_)
